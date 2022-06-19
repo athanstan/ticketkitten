@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConcertController;
 use Illuminate\Support\Facades\Route;
 
 /*

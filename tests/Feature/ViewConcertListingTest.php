@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\Models\Concert;
@@ -12,7 +11,7 @@ use Carbon\Carbon;
 class ViewConcertListing extends TestCase
 {
 
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /** @test */
     public function user_can_view_a_concert_listing()
@@ -43,5 +42,11 @@ class ViewConcertListing extends TestCase
         $view->assertSee('123 Example Lane');
         $view->assertSee('Laraville, ON 17916');
         $view->assertSee('For tickets, call (555) 555-5555.');
+    }
+
+    /** @test */
+    public function user_cannot_view_unpublished_concert_list()
+    {
+        // 
     }
 }
