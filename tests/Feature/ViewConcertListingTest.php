@@ -47,6 +47,13 @@ class ViewConcertListing extends TestCase
     /** @test */
     public function user_cannot_view_unpublished_concert_list()
     {
-        // 
+        $concert = Concert::factory()->create([
+            'published_at' => null,
+        ]);
+
+        $response = $this->get('/concerts/'.$concert->id);
+
+        $response->assertStatus(404);
+
     }
 }

@@ -44,8 +44,10 @@ class ConcertController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Concert $concert)
+    public function show($id)
     {
+        $concert = Concert::whereNonNull('published_at')->findOrFail($id);
+
         return view('concerts.show',[
             'concert' => $concert,
         ]);
